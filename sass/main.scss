@@ -1,0 +1,202 @@
+@import './utils/variables';
+@import './utils/placeholders';
+@import './base/normalize';
+@import './components/page-header';
+
+
+$color:red;
+$main-width:100px;
+
+body {
+    background-color: $color;
+    width: $main-width;
+}
+
+.section{
+    color: red;
+
+    .title{
+        color: green;
+    }
+
+    .text{
+        color: teal;
+    }
+
+    &-title{
+        color: aqua;
+
+        &--red{
+            color: red;
+        }
+    }
+
+    &__title{
+        color: antiquewhite;
+
+        &--red{
+            color: blueviolet;
+        }
+    }
+
+    &__text{
+        color: burlywood;
+    }
+
+    
+
+    &-text{
+        color: blanchedalmond;
+    }
+}
+
+// Але краще робити  наступним чином
+
+.section{
+    color:red;
+
+    &:hover{
+        color: beige;
+    }
+}
+
+.section__title{
+    color: azure;
+
+    &:hover{
+        color: gray;
+    }
+
+    &--green{
+        color: green;
+    }
+}
+
+.section__text{
+    color: violet;
+
+    &--red{
+        color: red;
+
+    }
+    &:focus{
+        color:black;
+    }
+}
+
+// If  div.box contains button, and while we hovering on box change styles in button let`s start the next
+
+.box {
+    background-color: red;
+}
+
+.button{
+    background-color: aquamarine;
+     &:hover,
+     &:focus{
+        background-color: beige;
+     }
+
+     .box:hover &{
+        background-color: orange;
+     }
+}
+
+.list-item{
+    background-color: aliceblue;
+
+    &:nth-child(2n){
+        color: bisque;
+    }
+}
+
+.notification {
+    background-color: #ccc;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.notification-error {
+    @extend .notification;
+    background-color: red;
+}
+
+.notification-success {
+    @extend .notification;
+    background-color: green;
+}
+
+%notification {
+    background-color: #ccc;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.notification-error {
+    @extend %notification;
+    background-color: red;
+}
+
+.notification-success {
+    @extend %notification;
+    background-color: green;
+}
+
+.features {
+    @extend %list;
+}
+
+@mixin bordered($color: black, $type: solid) {
+    border-top: 1px  $type $color;
+    border-bottom: 1px $type  $color;
+}
+
+p{
+    @include bordered (green solid);
+}
+
+div {
+    @include bordered ($type: dashed);
+}
+
+@mixin centeredFlex($type: flex) {
+    display: $type;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    @include centeredFlex();
+}
+
+div {
+    @include centeredFlex();
+}
+
+button {
+    @include centeredFlex(inline-flex);
+}
+
+
+// list, масив. перечислення
+$icons: 'facebook', 'linkedin', 'github', 'twitter';
+
+@each $iconName in $icons {
+    .icon-#{$iconName}{
+        background-color: teal;
+        background-image: url("../images/#{$iconName}.svg");
+    }
+}
+
+// or
+
+@mixin generateIcons($iconList) {
+@each $iconName in $iconList {
+        .icon-#{$iconName} {
+            background-color: teal;
+            background-image: url("../images/#{$iconName}.svg");
+        }
+    }
+}
+
+@include generateIcons($icons);
