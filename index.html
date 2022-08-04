@@ -10,5 +10,51 @@
 <body>
    <p class="notification-error"></p>
    <p class="notification-success"></p>
+<div class="page-header">
+    <div class="container">
+   <nav class="nav">
+    <button type="button" class="menu-button is-open" aria-expanded="false" aria-controls="menu-container">
+<svg width="20" height="20" aria-label="Переключатель мобільного меню">
+    <use class="icon-cross" href=""></use>
+    <use class="icon-menu" href=""></use>
+</svg>
+    </button>
+    <div class="menu-container <!-- is-open -->" id="menu-comtainer">
+        <div class="navigation"></div>
+        <div class="contacts"></div>
+    </div>
+   </nav>
+</div>
+</div>
+
+<div class="mobile-menu">
+    <div class="content"></div>
+</div>
+
+<div class="thumb">
+    <img src="./images/dog-640.jpg" alt="dog" width="640" srcset="./img/cat-320.jpg 1x, ./img/cat-640.jpg 2x">
+</div>
+
+<div class="thumb">
+    <img src="./images/dog-640.jpg" 
+    alt="dog" 
+    width="320" 
+    srcset="./img/cat-320.jpg 320w,
+     ./img/cat-640.jpg 640w"
+      sizes="(min-width: 800px) 100vw, (min-width: 500px) 50vw, 100vw">
+</div>
+<picture>
+    <source srcset="./img/cat-320.webp 320w, ./img/cat-640.webp 640w" type="image/webp">
+    <img srcset="./img/cat-320.jpg 320w, ./img/cat-640.jpg 640w"
+    src="./images/dog-640.jpg"
+     alt="dog">
+</picture>
+
+<!-- КАДРУВАННЯ -->
+<picture>
+    <source srcset="./img/cat-portrait.jpg/" media="(max-width: 576px)" />
+    <source srcset="./img/cat-landscape-wide.jpg" media="(min-width: 1000px)"/>
+    <img src="./img/cat-landscape-normal.jpg/" alt="cat"/>
+</picture>
 </body>
 </html>
